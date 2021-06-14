@@ -2,6 +2,7 @@
   "name": "elecciones-presidenciales-2021",
   "version": "1.0.0",
   "description": "",
+  "author": "Jorge Luis Callalle Torres",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +12,6 @@
     "url": "git+https://github.com/jlcallalle/Elecciones-Presidenciales-2021.git"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jlcallalle/Elecciones-Presidenciales-2021/issues"

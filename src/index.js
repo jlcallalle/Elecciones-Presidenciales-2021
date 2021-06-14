@@ -1,4 +1,3 @@
-//- server
 //const endpoint = "https://api.resultadossep.eleccionesgenerales2021.pe/results/10/000000?name=param";
 const endpoint = "http://127.0.0.1:8080/votos.json";
 
@@ -13,9 +12,9 @@ fetch(endpoint)
     const keys = Object.keys(listaResultados);
     console.log('keys',keys);
     console.log('value',value);
-    console.log('✏️',value);
 
-    const avance = value[0].actData.POR_AVANCE;
+    const avance = parseFloat(value[0].actData.POR_AVANCE);
+    const fecha = value[0].actData.FECHA;
     const agrupacion = value[1][0].AGRUPACION;
     const total_votos = value[1][0].TOTAL_VOTOS;
     const porcentaje_votos = value[1][0].POR_VALIDOS;
@@ -24,18 +23,20 @@ fetch(endpoint)
     const total_votosK = value[1][1].TOTAL_VOTOS;
     const porcentaje_votosK = value[1][1].POR_VALIDOS;
 
-    console.log('agrupacion:', agrupacionK);
-    console.log('total de votos:', total_votosK);
-    console.log('% de votos:', porcentaje_votosK);
-    
-
     console.log('********* % DE AVANCE ELECCIONES 2021', avance ,'**********');
+    console.log('Fecha de Actualización', fecha);
     console.log('✏️',value[1][0].AGRUPACION , '| Total de Votos: ', value[1][0].TOTAL_VOTOS , '| % VOTOS', value[1][0].POR_VALIDOS );
     console.log('🍊',value[1][1].AGRUPACION , '| Total de Votos: ', value[1][1].TOTAL_VOTOS , '| % VOTOS', value[1][1].POR_VALIDOS );
     
+    //Actas Procesadas
     const textoAvance = document.getElementById("texto-avance");
     textoAvance.innerHTML = JSON.stringify(avance);
 
+    //Fecha Actualización
+    const textoFecha = document.getElementById("texto-fecha");
+    textoFecha.innerHTML = JSON.stringify(fecha);
+
+    //Grupo Lapiz
     const textoAgrupacion = document.getElementById("texto-agrupacion");
     textoAgrupacion.innerHTML = JSON.stringify(agrupacion);
 
@@ -45,8 +46,7 @@ fetch(endpoint)
     const porcentajeVotos = document.getElementById("texto-porcentajes");
     porcentajeVotos.innerHTML = JSON.stringify(porcentaje_votos);
 
-
-    /*  */
+    //Grupo K
     const textoAgrupacionK = document.getElementById("texto-agrupacion-k");
     textoAgrupacionK.innerHTML = JSON.stringify(agrupacionK);
 
@@ -56,9 +56,6 @@ fetch(endpoint)
     const porcentajeVotosK = document.getElementById("texto-porcentajes-k");
     porcentajeVotosK.innerHTML = JSON.stringify(porcentaje_votosK);
 
-    /*  const element = document.getElementById("userId");
-    element.innerHTML = JSON.stringify(json); */
+    //Calculos
 
-    /* const element2 = document.getElementById("userId2");
-    element2.innerHTML = JSON.stringify(json, undefined, 4); */
   })
